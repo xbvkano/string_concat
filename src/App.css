@@ -1,0 +1,145 @@
+/* Root fill screen */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* Dark gray background, full width & height */
+.App.dark-mode {
+  background-color: #1e1e1e;
+  width: 100vw;  /* as you mentioned, or 100% */
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Black container in the middle */
+.container {
+  background-color: #121212;
+  color: #e0e0e0;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Stacked layout: top instructions, bottom experiment */
+.top-pane {
+  margin-bottom: 2rem;
+}
+
+.bottom-pane {
+  /* minimal styling */
+}
+
+/* Basic button styling */
+button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  font-size: 1rem;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #fff;
+}
+
+/* Valid = green, Not Valid = red */
+.valid-button {
+  background-color: #4CAF50;
+}
+
+.invalid-button {
+  background-color: #F44336;
+}
+
+/* Cancel, Reset => neutral background */
+.control-buttons button {
+  background-color: #555;
+}
+
+/* Input styling */
+input[type="number"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+
+/* Minimal spacing for text blocks */
+.setup p,
+.explanation p,
+.results p {
+  margin: 0.5rem 0;
+}
+
+/* Progress indicator */
+.progress {
+  margin-bottom: 1rem;
+}
+
+/* Feedback styling */
+.feedback {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+/* Modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Modal content */
+.modal {
+  background-color: #121212;
+  color: #e0e0e0;
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.modal-buttons {
+  margin-top: 1rem;
+}
+
+/* Yes/No => green/red backgrounds */
+.modal-button {
+  padding: 0.5rem 1rem;
+  margin: 0.25rem;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.modal-button.confirm {
+  background-color: #4CAF50; /* Green */
+  border-color: #4CAF50;
+}
+
+.modal-button.cancel {
+  background-color: #F44336; /* Red */
+  border-color: #F44336;
+}
+
+.modal-button:not(.confirm):not(.cancel) {
+  background-color: #555;
+  border-color: #555;
+}
+
+/* Responsive: for smaller screens */
+@media (max-width: 768px) {
+  .container {
+    margin: 0 1rem;
+    max-width: 100%;
+  }
+}
