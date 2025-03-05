@@ -129,6 +129,13 @@ function App() {
     setPhase("setup");
   };
 
+  // Return to the explanation phase from setup
+  const handleBackToExplanation = () => {
+    setPhase("explanation");
+    setInputCount("");
+    setSelectedGroupIndex(0);
+  };
+
   // Begin experiment
   const handleBeginExperiment = () => {
     const groupTasks = groups[selectedGroupIndex].tasks;
@@ -293,9 +300,7 @@ function App() {
     const maxCount = groups[selectedGroupIndex].tasks.length;
     return (
       <div className="setup">
-        <p>
-          Select which group of tasks to use:
-        </p>
+        <p>Select which group of tasks to use:</p>
         <select
           value={selectedGroupIndex}
           onChange={(e) => setSelectedGroupIndex(parseInt(e.target.value, 10))}
@@ -315,7 +320,11 @@ function App() {
           min="1"
           max={maxCount}
         />
-        <button onClick={handleBeginExperiment}>Begin Experiment</button>
+        <div className="setup-buttons">
+          <button onClick={handleBeginExperiment}>Begin Experiment</button>
+          {/* This button goes back to the explanation phase */}
+          <button onClick={handleBackToExplanation}>Back to Start</button>
+        </div>
       </div>
     );
   };
@@ -325,7 +334,7 @@ function App() {
     <div className="explanation">
       <h2>Welcome to the Validation Experiment</h2>
       <p>
-        In this experiment, you will see strings that may or may not be valid expressions. 
+        In this experiment, you will see strings that may or may not be valid expressions.
         Your job is to decide if each expression is valid <strong>([1])</strong> or invalid <strong>([0])</strong>.
       </p>
       <p>
@@ -366,22 +375,14 @@ function App() {
   return (
     <div className="App dark-mode">
       <div className="container">
-        {/* 
-          top-pane for a heading, if you want.
-          If you prefer the explanation only in the explanationView, 
-          you can remove top-pane or keep minimal text here. 
-        */}
         <div className="top-pane">
           <h1>Comparison of Quotes vs. ---</h1>
           <p>
-            Below, you'll choose a group and how many tasks to attempt. 
-            Then, for each expression, click "Valid" or "Not Valid." 
+            Below, you'll choose a group and how many tasks to attempt.
+            Then, for each expression, click "Valid" or "Not Valid."
           </p>
         </div>
-
-        <div className="bottom-pane">
-          {bottomPaneContent}
-        </div>
+        <div className="bottom-pane">{bottomPaneContent}</div>
       </div>
       {modal && <Modal {...modal} />}
     </div>
